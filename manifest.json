@@ -2,12 +2,11 @@
     "name": "Sleeper Chat Hider",
     "version": "1.2",
     "description": "Hides the sleeper chat feed",
-    "permissions": ["activeTab", "declarativeContent", "storage"],
+    "permissions": ["activeTab", "declarativeContent", "storage", "scripting"],
     "background": {
-        "scripts": ["background.js"],
-        "persistent": false
+        "service_worker": "background.js"
     },
-    "page_action": {
+    "action": {
         "default_popup": "popup.html",
         "default_icon": {
             "16": "images/icons8-no-chat-48.png",
@@ -30,5 +29,5 @@
           "run_at": "document_end"
         }
       ],
-    "manifest_version": 2
+    "manifest_version": 3
 }

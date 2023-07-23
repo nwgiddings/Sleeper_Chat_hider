@@ -1,14 +1,10 @@
 let toggle = document.getElementById('switch');
 toggle.onclick = function(element) {
     chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
-        chrome.tabs.executeScript(
-            tabs[0].id,
-            {code: 
-                "if (document.getElementsByClassName('dual-content-panel')[0].style.display == 'block') { \n" +
-                    "document.getElementsByClassName('dual-content-panel')[0].style.display = 'flex' \n" +
-                "} else { \n" +
-                    "document.getElementsByClassName('dual-content-panel')[0].style.display = 'block' \n" +
-                "}"
+        chrome.scripting.executeScript(
+            {
+                target: {tabId: tabs[0].id},
+                files: ['toggleView.js'],
             });
         saveChanges();
         getStateOfToggle();
